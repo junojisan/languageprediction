@@ -1,0 +1,29 @@
+<apex:page showHeader="true" sidebar="true" standardController="Case" extensions="LanguagePredictionController">
+	<apex:form id="fm">
+		<apex:sectionHeader title="言語を予測します" subtitle="{!cs.Subject}" />
+		<apex:outputPanel id="op">
+			<apex:pageBlock>
+				<apex:pageBlockButtons>
+					<apex:commandButton action="{!cancel}" value="キャンセル" />
+					<apex:commandButton action="{!doPredict}" value="言語を予測します" rerender="op" />
+				</apex:pageBlockButtons>
+				<apex:pageBlockSection columns="1" title="ケース情報">
+					<apex:outputField value="{!cs.CaseNumber}" />
+					<apex:outputField value="{!cs.Subject}" />
+					<apex:outputField value="{!cs.Description}" />
+					<apex:outputField value="{!cs.Language__c}" />
+				</apex:pageBlockSection>
+				<apex:pageBlockSection title="Request / Response" columns="2">
+					<apex:pageBlockSectionItem>
+						<apex:outputLabel value="Request" />
+						<apex:outputText value="{!request}" />
+					</apex:pageBlockSectionItem>
+					<apex:pageBlockSectionItem>
+						<apex:outputLabel value="Response" />
+						<apex:outputText value="{!response}" />
+					</apex:pageBlockSectionItem>
+				</apex:pageBlockSection>
+			</apex:pageBlock>
+		</apex:outputPanel>
+	</apex:form>
+</apex:page>
